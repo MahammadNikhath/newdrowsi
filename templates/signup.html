@@ -127,7 +127,9 @@
         <form action="/signup" method="POST">
             <input type="text" name="name" placeholder="Full Name" required>
             <input type="email" name="email" placeholder="Email" required>
-            <input type="text" name="phone_number" placeholder="Phone Number" required>
+            <input type="text" name="phone_number" placeholder="Phone Number" required 
+       pattern="\d{10}" title="Phone number must be exactly 10 digits">
+
             <input type="text" name="license_number" placeholder="License Number" required>
             <input type="text" name="vehicle_number" placeholder="Vehicle Number" required>
             <input type="password" name="password" placeholder="Password" required>

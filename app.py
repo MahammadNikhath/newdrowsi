@@ -7,6 +7,7 @@ import random
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import re
 
 app = Flask(__name__)
 # Initialize session
@@ -38,7 +39,10 @@ def signup():
         password = request.form['password']
         confirm_password = request.form['confirm_password']
         today_date = time.strftime("%Y-%m-%d")
-        
+
+        if not re.fullmatch(r'\d{10}', phone_number):
+           flash("Phone number must be exactly 10 digits.", "danger")
+           return redirect(url_for('signup'))
         if password != confirm_password:
             flash("Passwords do not match. Please try again.", "danger")
             return redirect(url_for('signup'))
